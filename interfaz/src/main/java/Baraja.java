@@ -15,7 +15,7 @@ public class Baraja extends JFrame {
 
     public Baraja(Menuordenacion menuOrdenacion) {
         setTitle("Ordenación por Baraja");
-        setSize(500, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

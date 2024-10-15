@@ -16,7 +16,7 @@ public class Burbuja extends JFrame {
 
     public Burbuja(Menuordenacion menuOrdenacion) {
         setTitle("Ordenación Burbuja");
-        setSize(500, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

@@ -18,7 +18,7 @@ public class Menuordenacion extends JFrame {
 
     private void inicializarMenuordenacion(Lab2 lab2) {
         setTitle("Métodos de Ordenación");
-        setSize(400, 500);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

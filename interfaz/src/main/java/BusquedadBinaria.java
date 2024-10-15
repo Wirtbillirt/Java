@@ -15,8 +15,8 @@ public class BusquedadBinaria extends JFrame {
     }
 
     private void inicializarBusquedadBinaria() {
-        setTitle("Búsqueda Binaria");
-        setSize(400, 500);
+        setTitle("Búsquedad");
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -26,7 +26,7 @@ public class BusquedadBinaria extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Crear el JLabel para el título
-        JLabel labelTitulo = new JLabel("Búsqueda Binaria", SwingConstants.CENTER);
+        JLabel labelTitulo = new JLabel("Búsquedad", SwingConstants.CENTER);
         labelTitulo.setFont(new Font("Arial", Font.BOLD, 18));
         panelPrincipal.add(labelTitulo, BorderLayout.NORTH);
 

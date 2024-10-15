@@ -24,7 +24,7 @@ public class BusquedaSecuencial extends JFrame {
 
     private void inicializarBusquedaSecuencial() {
         setTitle("Búsqueda Secuencial");
-        setSize(400, 500);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

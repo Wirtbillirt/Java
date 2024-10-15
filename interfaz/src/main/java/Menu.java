@@ -11,7 +11,6 @@ public class Menu extends JFrame {
     private JButton lab4Button;
     private JButton lab5Button;
     private JButton lab6Button;
-    private JButton lab7Button;
     private JButton volverButton;
     private Forma forma;
 
@@ -21,17 +20,23 @@ public class Menu extends JFrame {
     }
 
     private void inicializarMenu() {
-        JPanel panelPrincipal = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(45, 92, 5, 92);
+        // Crear un JPanel personalizado para la imagen de fondo
+        JPanel panelPrincipal = new JPanel(null) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon fondo = cargarImagen("/Fondo.jpg");
+                if (fondo != null) {
+                    g.drawImage(fondo.getImage(), 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
 
         labelMenu = new JLabel("Menu", SwingConstants.CENTER);
         labelMenu.setFont(new Font("Arial", Font.BOLD, 24));
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        panelPrincipal.add(labelMenu, gbc);
+        labelMenu.setForeground(Color.WHITE);
+        labelMenu.setBounds(350, 20, 100, 40);
+        panelPrincipal.add(labelMenu);
 
         lab1Button = new JButton("Lab 1");
         lab2Button = new JButton("Lab 2");
@@ -39,83 +44,44 @@ public class Menu extends JFrame {
         lab4Button = new JButton("Lab 4");
         lab5Button = new JButton("Lab 5");
         lab6Button = new JButton("Lab 6");
-        lab7Button = new JButton("Lab 7");
         volverButton = new JButton("Volver");
 
-        Dimension botonDimension = new Dimension(100, 30);
-        lab1Button.setPreferredSize(botonDimension);
-        lab2Button.setPreferredSize(botonDimension);
-        lab3Button.setPreferredSize(botonDimension);
-        lab4Button.setPreferredSize(botonDimension);
-        lab5Button.setPreferredSize(botonDimension);
-        lab6Button.setPreferredSize(botonDimension);
-        lab7Button.setPreferredSize(botonDimension);
-        volverButton.setPreferredSize(botonDimension);
+        Color botonColor = Color.decode("#e6e6fa");
+        Color textoBotonColor = Color.BLACK;
 
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.NONE;
+        JButton[] botones = {lab1Button, lab2Button, lab3Button, lab4Button, lab5Button, lab6Button, volverButton};
+        for (JButton boton : botones) {
+            boton.setBackground(botonColor);
+            boton.setForeground(textoBotonColor);
+            boton.setFocusPainted(false);
+        }
 
-        gbc.gridx = 0;
-        panelPrincipal.add(lab1Button, gbc);
+        lab1Button.setBounds(20, 100, 100, 30);
+        lab3Button.setBounds(20, 200, 100, 30);
+        lab5Button.setBounds(20, 300, 100, 30);
+        lab2Button.setBounds(680, 100, 100, 30);
+        lab4Button.setBounds(680, 200, 100, 30);
+        lab6Button.setBounds(680, 300, 100, 30);
+        volverButton.setBounds(20, 500, 100, 30);
 
-        gbc.gridx = 1;
-        panelPrincipal.add(lab2Button, gbc);
-
-        gbc.gridy = 2;
-        gbc.gridx = 0;
-        panelPrincipal.add(lab3Button, gbc);
-
-        gbc.gridx = 1;
-        panelPrincipal.add(lab4Button, gbc);
-
-        gbc.gridy = 3;
-        gbc.gridx = 0;
-        panelPrincipal.add(lab5Button, gbc);
-
-        gbc.gridx = 1;
-        panelPrincipal.add(lab6Button, gbc);
-
-        gbc.gridy = 4;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.NONE;
-        panelPrincipal.add(lab7Button, gbc);
-
-        gbc.gridy = 5;
-        gbc.gridx = 0;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.WEST;
-        panelPrincipal.add(volverButton, gbc);
+        panelPrincipal.add(lab1Button);
+        panelPrincipal.add(lab2Button);
+        panelPrincipal.add(lab3Button);
+        panelPrincipal.add(lab4Button);
+        panelPrincipal.add(lab5Button);
+        panelPrincipal.add(lab6Button);
+        panelPrincipal.add(volverButton);
 
         setContentPane(panelPrincipal);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 500);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // ActionListener para el botón "Lab 1"
-        lab1Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarLab1();
-            }
-        });
-
-        // ActionListener para el botón "Lab 2"
-        lab2Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarLab2();
-            }
-        });
-
-        volverButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                volverAForma();
-            }
-        });
+        lab1Button.addActionListener(e -> mostrarLab1());
+        lab2Button.addActionListener(e -> mostrarLab2());
+        lab3Button.addActionListener(e -> mostrarLab3());
+        volverButton.addActionListener(e -> volverAForma());
     }
 
     private void mostrarLab1() {
@@ -130,9 +96,19 @@ public class Menu extends JFrame {
         this.dispose();
     }
 
+    private void mostrarLab3() {
+        Lab3 lab3 = new Lab3(this);  // Cambiar aquí para redirigir a Lab3
+        lab3.setVisible(true);
+        this.dispose();
+    }
+
     private void volverAForma() {
         Forma forma = new Forma();
         forma.setVisible(true);
         this.dispose();
+    }
+
+    private ImageIcon cargarImagen(String ruta) {
+        return new ImageIcon(getClass().getResource(ruta));
     }
 }

@@ -12,6 +12,9 @@ public class Forma extends JFrame {
     private JLabel labelDocente;
     private JLabel labelLogo;
     private JLabel labelWil;
+    private JLabel labelWilNombre;
+    private JLabel labelAngel;
+    private JLabel labelAngelNombre;
     private JButton botonSiguiente;
 
     public Forma() {
@@ -20,7 +23,7 @@ public class Forma extends JFrame {
 
     private void inicializarForma() {
         // Crear los JLabels de texto
-        labelUniversidad = new JLabel("Universidad Nacional De Ingeniería");
+        labelUniversidad = new JLabel("UNIVERSIDAD NACIONAL DE INGENIERÍA");
         labelUniversidad.setHorizontalAlignment(JLabel.CENTER);
         labelDactic = new JLabel("DACTIC");
         labelDactic.setHorizontalAlignment(JLabel.CENTER);
@@ -34,24 +37,37 @@ public class Forma extends JFrame {
         // Configurar imágenes (asume que las imágenes están en el recurso adecuado)
         ImageIcon iconoLogo = cargarImagen("/logo_uni.png");
         ImageIcon iconoWil = cargarImagen("/wil.jpg");
+        ImageIcon fondo = cargarImagen("/Fondo.jpg");
+        ImageIcon iconoAngel = cargarImagen("/Angel.jpg");
 
-        if (iconoLogo != null && iconoWil != null) {
+        if (iconoLogo != null && iconoWil != null && iconoAngel != null) {
             Image imagenLogo = iconoLogo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             Image imagenWil = iconoWil.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            Image imagenAngel = iconoAngel.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             labelLogo = new JLabel(new ImageIcon(imagenLogo));
             labelWil = new JLabel(new ImageIcon(imagenWil));
+            labelAngel = new JLabel(new ImageIcon(imagenAngel));
+
+            // Agregar los nombres debajo de las imágenes
+            labelWilNombre = new JLabel("Wilberth Alejandro Pérez Loredo");
+            labelWilNombre.setHorizontalAlignment(JLabel.CENTER);
+            labelAngelNombre = new JLabel("Ángel Rafael Maltez Navarrete");
+            labelAngelNombre.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        // Inicializar el panel principal con BorderLayout
-        panel1 = new JPanel(new BorderLayout());
+        // Inicializar el panel principal con fondo
+        panel1 = new FondoPanel(fondo.getImage());
+        panel1.setLayout(new BorderLayout());
 
         // Panel superior con el logo
         JPanel panelSuperior = new JPanel(new BorderLayout());
+        panelSuperior.setOpaque(false); // Hacer transparente
         panelSuperior.setBorder(BorderFactory.createEmptyBorder(-10, 10, 10, 10));
         panelSuperior.add(labelLogo, BorderLayout.WEST);
 
         // Panel central con texto
         JPanel panelCentral = new JPanel(new GridBagLayout());
+        panelCentral.setOpaque(false); // Hacer transparente
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -71,10 +87,24 @@ public class Forma extends JFrame {
 
         panelSuperior.add(panelCentral, BorderLayout.CENTER);
 
-        // Panel inferior con la imagen 'Wil'
-        JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelInferior.setBorder(BorderFactory.createEmptyBorder(80, 10, 10, 10));
-        panelInferior.add(labelWil);
+        // Panel inferior con las imágenes y los nombres
+        JPanel panelInferior = new JPanel(new GridLayout(1, 2));  // Distribuir las imágenes en dos columnas
+        panelInferior.setOpaque(false); // Hacer transparente
+
+        // Panel izquierdo con imagen Wil y su nombre
+        JPanel panelIzquierda = new JPanel(new BorderLayout());
+        panelIzquierda.setOpaque(false); // Hacer transparente
+        panelIzquierda.add(labelWil, BorderLayout.CENTER);
+        panelIzquierda.add(labelWilNombre, BorderLayout.SOUTH);
+
+        // Panel derecho con imagen Angel y su nombre
+        JPanel panelDerecha = new JPanel(new BorderLayout());
+        panelDerecha.setOpaque(false); // Hacer transparente
+        panelDerecha.add(labelAngel, BorderLayout.CENTER);
+        panelDerecha.add(labelAngelNombre, BorderLayout.SOUTH);
+
+        panelInferior.add(panelIzquierda);
+        panelInferior.add(panelDerecha);
 
         panel1.add(panelSuperior, BorderLayout.NORTH);
         panel1.add(panelInferior, BorderLayout.CENTER);
@@ -89,15 +119,15 @@ public class Forma extends JFrame {
         });
 
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panelBoton.setOpaque(false); // Hacer transparente
         panelBoton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panelBoton.add(botonSiguiente);
-
         panel1.add(panelBoton, BorderLayout.SOUTH);
 
         // Configurar la ventana
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 500);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -120,6 +150,23 @@ public class Forma extends JFrame {
         } catch (Exception e) {
             System.out.println("No se pudo cargar la imagen: " + ruta);
             return null;
+        }
+    }
+
+    // Clase personalizada para establecer la imagen de fondo
+    class FondoPanel extends JPanel {
+        private Image imagenFondo;
+
+        public FondoPanel(Image imagen) {
+            this.imagenFondo = imagen;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (imagenFondo != null) {
+                g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+            }
         }
     }
 

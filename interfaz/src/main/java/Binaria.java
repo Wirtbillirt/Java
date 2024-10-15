@@ -23,7 +23,7 @@ public class Binaria extends JFrame {
 
     private void inicializarBinaria() {
         setTitle("Búsqueda Binaria");
-        setSize(400, 500);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

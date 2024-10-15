@@ -51,7 +51,7 @@ public class Lab1 extends JFrame {
 
         // Configurar la ventana
         setContentPane(panelPrincipal);
-        setSize(400, 500); // Tamaño ajustado para ser consistente con otras ventanas
+        setSize(800, 500); // Tamaño ajustado para ser consistente con otras ventanas
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         setResizable(false); // Evitar que se redimensione la ventana

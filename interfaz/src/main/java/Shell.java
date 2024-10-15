@@ -15,7 +15,7 @@ public class Shell extends JFrame {
 
     public Shell(Menuordenacion menuOrdenacion) {
         setTitle("Método de Ordenación Shell");
-        setSize(500, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

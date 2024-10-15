@@ -55,7 +55,7 @@ public class ordenado extends JFrame {
 
         // Configurar la ventana
         setContentPane(panelPrincipal);
-        setSize(400, 500);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

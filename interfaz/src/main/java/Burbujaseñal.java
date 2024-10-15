@@ -16,7 +16,7 @@ public class Burbujaseñal extends JFrame {
 
     public Burbujaseñal(Menuordenacion menuOrdenacion) {
         setTitle("Método de Burbuja con Señal");
-        setSize(500, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

@@ -24,7 +24,7 @@ public class BusquedaSecuencialOrdenada extends JFrame {
 
     private void inicializarBusquedaSecuencialOrdenada() {
         setTitle("Búsqueda Secuencial Ordenada");
-        setSize(400, 500);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

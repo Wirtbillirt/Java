@@ -16,7 +16,7 @@ public class Lab2 extends JFrame {
 
     private void inicializarLab2() {
         setTitle("Lab 2");
-        setSize(400, 500); // Tamaño igual al de Menu
+        setSize(800, 600); // Tamaño igual al de Menu
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -32,7 +32,7 @@ public class Lab2 extends JFrame {
 
         // Crear los botones
         metodoOrdenacionButton = new JButton("Métodos de Ordenación");
-        busquedaBinariaButton = new JButton("Búsqueda Binaria");
+        busquedaBinariaButton = new JButton("Búsquedad");
         regresarButton = new JButton("Regresar");
 
         // Crear panel para los botones y alinearlos horizontalmente
